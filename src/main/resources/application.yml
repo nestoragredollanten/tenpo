@@ -32,7 +32,9 @@ springdoc:
 # Configuración para el ambiente de desarrollo
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   datasource:
     url: jdbc:postgresql://localhost:5432/dev_postgres
     username: dev_postgres
@@ -45,7 +47,9 @@ spring:
 # Configuración para el ambiente de prueba
 ---
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
