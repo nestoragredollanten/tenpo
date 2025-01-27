@@ -1,10 +1,8 @@
+# Configuración común a todos los ambientes
 spring:
   application:
     name: tenpo
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
@@ -23,10 +21,6 @@ spring:
     show-sql: true
   cache:
     type: redis
-  data:
-    redis:
-      host: ${SPRING_REDIS_HOST}
-      port: ${SPRING_REDIS_PORT}
   sql:
     init:
       platform: postgresql
@@ -34,3 +28,29 @@ spring:
 springdoc:
   api-docs:
     path: /swagger-ui.html
+
+# Configuración para el ambiente de desarrollo
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev_postgres
+    username: dev_postgres
+    password: dev_password
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# Configuración para el ambiente de prueba
+---
+spring:
+  profiles: test
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST}
+      port: ${SPRING_REDIS_PORT}
