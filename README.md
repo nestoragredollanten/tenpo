@@ -59,7 +59,7 @@ spring:
 Asegúrate de que los servicios de **PostgreSQL** y **Redis** estén funcionando antes de levantar la aplicación. Si usas Docker, puedes utilizar el siguiente comando para levantarlos rápidamente:
 
 ```bash
-docker-compose up -d
+docker-compose up --build
 ```
 
 Asegúrate de que el archivo `docker-compose.yml` tenga configuraciones correctas para PostgreSQL y Redis.
